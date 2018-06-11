@@ -27,16 +27,33 @@ function shuffle(array) {
 
 let getCards = document.querySelectorAll('.card');
 let clicks=0;
+let cardsOpen=[];
 
 getCards.forEach(function(flip){
     flip.addEventListener('click', function(event){
         console.log(event);
+        cardsOpen.push(flip);
         clicks++
         if(clicks<=2){
         flip.classList.add('open', 'show');
     }
+    matchCheck();
+
     });
 });
+
+function matchCheck(){
+    cardsOpen.forEach(function(match){
+        match.firstElementChild
+        console.log(match)
+    });
+    /*if(cardsOpen[0]==cardsOpen[1]){
+        console.log("match")
+    }else{
+        console.log("not match")
+    }
+    check for matc*/
+};
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
