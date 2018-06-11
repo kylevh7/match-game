@@ -34,19 +34,22 @@ getCards.forEach(function(flip){
         console.log(event);
         cardsOpen.push(flip);
         clicks++
-        if(clicks<=2){
+        if(clicks<3){
         flip.classList.add('open', 'show');
+        matchCheck();
     }
-    matchCheck();
 
     });
 });
-
+let compare=[];
 function matchCheck(){
     cardsOpen.forEach(function(match){
-        match.firstElementChild
-        console.log(match)
+        let x=match.firstElementChild.classList[1];
+        compare.push(x);
     });
+    if (compare[0]===compare[2]){
+        console.log("its a match!");
+    }
     /*if(cardsOpen[0]==cardsOpen[1]){
         console.log("match")
     }else{
