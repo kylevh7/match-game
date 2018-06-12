@@ -43,11 +43,16 @@ getCards.forEach(function(flip){
 });
 
 
-let compare=[]
+
 function matchCheck(){
     console.log('fire');
     if(cardsOpen[0].querySelector('i').classList.item(1)==cardsOpen[1].querySelector('i').classList.item(1)){
         console.log('its a match');
+        cardsOpen.forEach(function(match){
+            match.classList.add('match');
+            cardsOpen=[];
+        })
+
     }
 
 };
