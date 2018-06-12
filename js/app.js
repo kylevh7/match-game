@@ -30,32 +30,26 @@ let clicks=0;
 let cardsOpen=[];
 
 getCards.forEach(function(flip){
-    flip.addEventListener('click', function(event){
-        console.log(event);
+        flip.addEventListener('click', function(event){
         cardsOpen.push(flip);
         clicks++
-        if(clicks<3){
-        flip.classList.add('open', 'show');
-        matchCheck();
-    }
-
+            if(cardsOpen.length<3){
+                flip.classList.add('open', 'show');
+                }
+            if(cardsOpen.length==2){
+                matchCheck();
+            }
     });
 });
-let compare=[];
+
+
+let compare=[]
 function matchCheck(){
-    cardsOpen.forEach(function(match){
-        let x=match.firstElementChild.classList[1];
-        compare.push(x);
-    });
-    if (compare[0]===compare[2]){
-        console.log("its a match!");
+    console.log('fire');
+    if(cardsOpen[0].querySelector('i').classList.item(1)==cardsOpen[1].querySelector('i').classList.item(1)){
+        console.log('its a match');
     }
-    /*if(cardsOpen[0]==cardsOpen[1]){
-        console.log("match")
-    }else{
-        console.log("not match")
-    }
-    check for matc*/
+
 };
 /*
  * set up the event listener for a card. If a card is clicked:
