@@ -51,7 +51,14 @@ function matchCheck(){
         cardsOpen.forEach(function(match){
             match.classList.add('match');
             cardsOpen=[];
-        })
+        });
+    }else{
+        setTimeout(function(){
+        cardsOpen.forEach(function(unmatched){
+            unmatched.classList.remove('open', 'show');
+            cardsOpen=[];
+        });
+    },1000);
 
     }
 
