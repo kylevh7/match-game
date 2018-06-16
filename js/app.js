@@ -28,6 +28,8 @@ console.log(array);
 let getCards = document.querySelectorAll('.card');
 let clicks=0;
 let cardsOpen=[];
+let moves=document.getElementById('stars');
+let panel=0;
 
 
 getCards.forEach(function(flip){
@@ -38,6 +40,8 @@ getCards.forEach(function(flip){
                 flip.classList.add('open', 'show');
                 }
             if(cardsOpen.length==2){
+                moves.insertAdjacentHTML('beforeend', '<li><i class="fa fa-star"></i></li>');
+
                 matchCheck();
             }
     });
@@ -47,6 +51,7 @@ getCards.forEach(function(flip){
 
 function matchCheck(){
     console.log('fire');
+
     if(cardsOpen[0].querySelector('i').classList.item(1)==cardsOpen[1].querySelector('i').classList.item(1)){
         console.log('its a match');
         cardsOpen.forEach(function(match){
@@ -62,6 +67,7 @@ function matchCheck(){
         },1000);
     }
 }
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
