@@ -11,6 +11,7 @@
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -29,24 +30,28 @@ let getCards = document.querySelectorAll('.card');
 let clicks=0;
 let cardsOpen=[];
 let moves=document.getElementById('stars');
-let panel=0;
+let array=Array.from(getCards);
+let match_test=true;
 
 
-getCards.forEach(function(flip){
-        flip.addEventListener('click', function(event){
-        cardsOpen.push(flip);
+    getCards.forEach(function(flip){
+        flip.addEventListener('click', function x(){
+            if(!flip.classList.contains('open') && !flip.classList.contains('show')){
+            cardsOpen.push(flip);
+            flip.classList.add('open','show');
+        };
+            update_score();
+        });
+    });
+
+
+    function update_score(){
         clicks++
-            if(cardsOpen.length<3){
-                flip.classList.add('open', 'show');
-                }
             if(cardsOpen.length==2){
                 moves.insertAdjacentHTML('beforeend', '<li><i class="fa fa-star"></i></li>');
-
                 matchCheck();
-            }
-    });
-});
-
+            };
+    };
 
 
 function matchCheck(){
@@ -62,11 +67,16 @@ function matchCheck(){
         setTimeout(function(){
         cardsOpen.forEach(function(unmatched){
             unmatched.classList.remove('open', 'show');
+            match_test=false;
             cardsOpen=[];
         });
         },1000);
+
     }
+
 }
+
+
 
 
 /*
