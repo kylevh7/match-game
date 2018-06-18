@@ -31,14 +31,12 @@ reset.addEventListener('click', restart);
 frog.forEach(function(flip) {
     flip.addEventListener('click', function x() {
 
-        if (!flip.classList.contains('open') && !flip.classList.contains('show')&&cardsOpen.length<2) {
+        if (!flip.classList.contains('open') && !flip.classList.contains('show') && cardsOpen.length < 2) {
             cardsOpen.push(flip);
-
             flip.classList.add('open', 'show');
-
-
+            update_score();
         };
-        update_score();
+
     });
 });
 
@@ -66,7 +64,7 @@ function matchCheck() {
                 match_test = false;
                 cardsOpen = [];
             });
-        }, 300);
+        }, 1000);
 
     }
 
