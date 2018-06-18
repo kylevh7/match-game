@@ -10,10 +10,18 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-console.log(array);
+
 frog=array;
-    }
-//cosider looping through getCards and append each iteration to the deck class
+// Removing all children from an element
+var element = document.querySelector(".deck");
+while (element.firstChild) {
+  element.removeChild(element.firstChild);
+}
+frog.forEach(function(scramble){
+    element.appendChild(scramble);
+});
+};
+
 let getCards = document.querySelectorAll('.card');
 let clicks=0;
 let cardsOpen=[];
@@ -44,7 +52,7 @@ reset.addEventListener('click',restart);
 
 
 function matchCheck(){
-    console.log('fire');
+
 
     if(cardsOpen[0].querySelector('i').classList.item(1)==cardsOpen[1].querySelector('i').classList.item(1)){
         console.log('its a match');
@@ -65,6 +73,5 @@ function matchCheck(){
 
 }
 function restart(){
-    console.log('foo');
-
-}
+    location.reload();
+};
