@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
@@ -8,6 +9,7 @@
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body onLoad="shuffle(frog)">
 
     <div class="container">
@@ -16,20 +18,18 @@
         </header>
 
         <section class="score-panel">
-            <span class="moves">Player Rating<br/>
-
-
+            <span id="timer"></span></br>
+            <span id="moves"></span></br>
+            <span class="Rating">Player Rating
             </span>
-        	<ul id="stars">
+            <ul id="stars">
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
                 <li><i class="fa fa-star"></i></li>
-        	</ul>
-
-
+            </ul>
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+                <i class="fa fa-repeat"></i>
+            </div>
         </section>
 
         <ul class="deck">
@@ -86,4 +86,5 @@
 
     <script src="js/app.js"></script>
 </body>
+
 </html>

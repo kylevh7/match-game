@@ -18,7 +18,11 @@ function shuffle(array) {
     frog.forEach(function(scramble) {
         element.appendChild(scramble);
     });
+    var threeMinutes = 60 * 3,
+        display = document.querySelector('#timer');
+    startTimer(threeMinutes, display);
 };
+
 //Global variables
 let getCards = document.querySelectorAll('.card');
 let clicks = 0;
@@ -27,6 +31,8 @@ let scoreKeeper = [];
 let moves = document.getElementById('stars');
 let frog = Array.from(getCards);
 let reset = document.querySelector('.restart');
+let matchCount = 0;
+let attempts=0;
 //Event Listeners
 reset.addEventListener('click', restart);
 
@@ -38,6 +44,10 @@ frog.forEach(function(flip) {
             flip.classList.add('open', 'show');
         };
         if (cardsOpen.length == 2) {
+            if(matchCount%2==0){
+                attempts++;
+            document.getElementById("moves").innerHTML="moves "+attempts;
+        };
             update_score();
         };
     });
@@ -50,13 +60,13 @@ function update_score() {
             moves.removeChild(moves.childNodes[1]);
         };
     };
-     if (scoreKeeper.length == 30) {
+    if (scoreKeeper.length == 40) {
         if (moves.hasChildNodes()) {
             moves.removeChild(moves.childNodes[2]);
         };
     };
-    if (scoreKeeper.length == 40) {
-        alert("You are out of moves!!!");
+    if (scoreKeeper.length == 60) {
+        alert("You are out of moves!!! Click reset and try again.");
     };
     matchCheck();
 };
@@ -68,6 +78,12 @@ function matchCheck() {
         cardsOpen.forEach(function(match) {
             match.classList.add('match');
             cardsOpen = [];
+            matchCount++;
+            if (matchCount == 16) {
+                console.log("you win");
+                alert("You Win!!! If you would like to play again, click the reset button");
+
+            }
         });
     } else {
         setTimeout(function() {
@@ -81,6 +97,30 @@ function matchCheck() {
     };
 
 };
+
+function startTimer(duration, display) {
+    var timer = duration,
+        minutes, seconds;
+    setInterval(function() {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+        if (matchCount == 16) {
+            return;
+        };
+        if (--timer < 0) {
+            timer = duration;
+            alert("You are out of time!!!")
+        };
+
+    }, 1000);
+}
+
+
 
 function restart() {
     location.reload();
