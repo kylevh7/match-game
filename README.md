@@ -1,20 +1,11 @@
-# Memory Game Project
+Match Game
+Written by Kyle VanHaitsma
 
-## Table of Contents
+The purpose of the game is to try and match all cards in the game area. 
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+There is a 3:00 minute timer, the players moves are tracked above the game board and the player
+rating will fall from 3 stars down to one as the moves continue to increase. Eventually, if the 
+moves reach an upper limit the game will end and ask the player to restart. 
 
-## Instructions
+This game is compatible with most modern devices with a web browser. 
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).

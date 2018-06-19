@@ -1,4 +1,4 @@
-//shuffle function
+//Function shuffles cards, and inserts them into html. Also calls timer function
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -32,10 +32,9 @@ let moves = document.getElementById('stars');
 let frog = Array.from(getCards);
 let reset = document.querySelector('.restart');
 let matchCount = 0;
-let attempts=0;
+let attempts = 0;
 //Event Listeners
 reset.addEventListener('click', restart);
-
 frog.forEach(function(flip) {
     flip.addEventListener('click', function x() {
         if (!flip.classList.contains('open') && !flip.classList.contains('show') && cardsOpen.length < 2) {
@@ -44,15 +43,14 @@ frog.forEach(function(flip) {
             flip.classList.add('open', 'show');
         };
         if (cardsOpen.length == 2) {
-            if(matchCount%2==0){
+            if (matchCount % 2 == 0) {
                 attempts++;
-            document.getElementById("moves").innerHTML="moves "+attempts;
-        };
+                document.getElementById("moves").innerHTML = "moves " + attempts;
+            };
             update_score();
         };
     });
 });
-
 
 function update_score() {
     if (scoreKeeper.length == 26) {
@@ -71,7 +69,6 @@ function update_score() {
     matchCheck();
 };
 
-
 function matchCheck() {
     if (cardsOpen[0].querySelector('i').classList.item(1) == cardsOpen[1].querySelector('i').classList.item(1)) {
         console.log('its a match');
@@ -82,7 +79,6 @@ function matchCheck() {
             if (matchCount == 16) {
                 console.log("you win");
                 alert("You Win!!! If you would like to play again, click the reset button");
-
             }
         });
     } else {
@@ -93,16 +89,15 @@ function matchCheck() {
                 cardsOpen = [];
             });
         }, 1000);
-
     };
-
 };
 
+//Timer function
 function startTimer(duration, display) {
     var timer = duration,
         minutes, seconds;
     setInterval(function() {
-        minutes = parseInt(timer / 60, 10)
+        minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
 
         minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -114,14 +109,12 @@ function startTimer(duration, display) {
         };
         if (--timer < 0) {
             timer = duration;
-            alert("You are out of time!!!")
+            alert("You are out of time!!!");
         };
-
     }, 1000);
-}
+};
 
-
-
+//reset game/reset page function
 function restart() {
     location.reload();
 };
