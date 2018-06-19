@@ -55,12 +55,12 @@ frog.forEach(function(flip) {
 
 
 function update_score() {
-    if (scoreKeeper.length == 20) {
+    if (scoreKeeper.length == 26) {
         if (moves.hasChildNodes()) {
             moves.removeChild(moves.childNodes[1]);
         };
     };
-    if (scoreKeeper.length == 40) {
+    if (scoreKeeper.length == 46) {
         if (moves.hasChildNodes()) {
             moves.removeChild(moves.childNodes[2]);
         };
