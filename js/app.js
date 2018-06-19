@@ -23,30 +23,42 @@ function shuffle(array) {
 let getCards = document.querySelectorAll('.card');
 let clicks = 0;
 let cardsOpen = [];
+let scoreKeeper = [];
 let moves = document.getElementById('stars');
 let frog = Array.from(getCards);
 let reset = document.querySelector('.restart');
 //Event Listeners
 reset.addEventListener('click', restart);
+
 frog.forEach(function(flip) {
     flip.addEventListener('click', function x() {
-
         if (!flip.classList.contains('open') && !flip.classList.contains('show') && cardsOpen.length < 2) {
             cardsOpen.push(flip);
+            scoreKeeper.push(flip);
             flip.classList.add('open', 'show');
+        };
+        if (cardsOpen.length == 2) {
             update_score();
         };
-
     });
 });
 
 
 function update_score() {
-
-    if (cardsOpen.length == 2) {
-        moves.insertAdjacentHTML('beforeend', '<li><i class="fa fa-star"></i></li>');
-        matchCheck();
+    if (scoreKeeper.length == 20) {
+        if (moves.hasChildNodes()) {
+            moves.removeChild(moves.childNodes[1]);
+        };
     };
+     if (scoreKeeper.length == 30) {
+        if (moves.hasChildNodes()) {
+            moves.removeChild(moves.childNodes[2]);
+        };
+    };
+    if (scoreKeeper.length == 40) {
+        alert("You are out of moves!!!");
+    };
+    matchCheck();
 };
 
 
@@ -66,9 +78,9 @@ function matchCheck() {
             });
         }, 1000);
 
-    }
+    };
 
-}
+};
 
 function restart() {
     location.reload();
