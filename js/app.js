@@ -21,10 +21,6 @@ function shuffle(array) {
     var threeMinutes = 60 * 3,
         display = document.querySelector('#timer');
     startTimer(threeMinutes, display);
-    //elapsed time
-        elapsedTime=threeMinutes-display;
-        console.log(threeMinutes, display.innerHTML);
-
 };
 
 //Global variables
@@ -84,7 +80,7 @@ function matchCheck() {
             if (matchCount == 16) {
                 setTimeout(function(){
                 console.log("you win");
-                alert("You Won in " );
+                alert("You Won in! You finished in "+elapsedTime+"seconds and your player rating is " );
             },300);
             }
         });
@@ -103,6 +99,7 @@ function matchCheck() {
 function startTimer(duration, display) {
     var timer = duration,
         minutes, seconds;
+        console.log(timer);
     setInterval(function() {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -110,14 +107,19 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
+
         display.textContent = minutes + ":" + seconds;
+
         if (matchCount == 16) {
+
+            elapsedTime=duration-(minutes*60+seconds);
             return;
         };
         if (--timer < 0) {
             timer = duration;
             alert("You are out of time!!!");
         };
+
     }, 1000);
 };
 
