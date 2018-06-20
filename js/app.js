@@ -21,9 +21,14 @@ function shuffle(array) {
     var threeMinutes = 60 * 3,
         display = document.querySelector('#timer');
     startTimer(threeMinutes, display);
+    //elapsed time
+        elapsedTime=threeMinutes-display;
+        console.log(threeMinutes, display.innerHTML);
+
 };
 
 //Global variables
+let elapsedTime=0;
 let getCards = document.querySelectorAll('.card');
 let clicks = 0;
 let cardsOpen = [];
@@ -41,13 +46,13 @@ frog.forEach(function(flip) {
             cardsOpen.push(flip);
             scoreKeeper.push(flip);
             flip.classList.add('open', 'show');
-        };
-        if (cardsOpen.length == 2) {
-            if (matchCount % 2 == 0) {
-                attempts++;
-                document.getElementById("moves").innerHTML = "moves " + attempts;
+            if (cardsOpen.length == 2) {
+                if (matchCount % 2 == 0) {
+                    attempts++;
+                    document.getElementById("moves").innerHTML = "moves " + attempts;
+                };
+                update_score();
             };
-            update_score();
         };
     });
 });
@@ -77,8 +82,10 @@ function matchCheck() {
             cardsOpen = [];
             matchCount++;
             if (matchCount == 16) {
+                setTimeout(function(){
                 console.log("you win");
-                alert("You Win!!! If you would like to play again, click the reset button");
+                alert("You Won in " );
+            },300);
             }
         });
     } else {
@@ -113,6 +120,7 @@ function startTimer(duration, display) {
         };
     }, 1000);
 };
+
 
 //reset game/reset page function
 function restart() {
