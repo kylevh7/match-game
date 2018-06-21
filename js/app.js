@@ -20,16 +20,18 @@ function shuffle(array) {
     });
     var threeMinutes = 60 * 3,
         display = document.querySelector('#timer');
+        console.log(display);
     startTimer(threeMinutes, display);
 };
 
 //Global variables
-let elapsedTime=0;
+let timeLeft;
 let getCards = document.querySelectorAll('.card');
 let clicks = 0;
 let cardsOpen = [];
 let scoreKeeper = [];
 let moves = document.getElementById('stars');
+let endScore = moves.children;
 let frog = Array.from(getCards);
 let reset = document.querySelector('.restart');
 let matchCount = 0;
@@ -70,6 +72,7 @@ function update_score() {
     matchCheck();
 };
 
+
 function matchCheck() {
     if (cardsOpen[0].querySelector('i').classList.item(1) == cardsOpen[1].querySelector('i').classList.item(1)) {
         console.log('its a match');
@@ -78,10 +81,11 @@ function matchCheck() {
             cardsOpen = [];
             matchCount++;
             if (matchCount == 16) {
-                setTimeout(function(){
-                console.log("you win");
-                alert("You Won in! You finished in "+elapsedTime+"seconds and your player rating is " );
-            },300);
+                setTimeout(function() {
+                    console.log("you win");
+                    alert("You Won! You finished with "+ timeLeft +" left and your player rating is " + endScore.length + " stars! Click reset to play again!");
+
+                }, 300);
             }
         });
     } else {
@@ -99,7 +103,7 @@ function matchCheck() {
 function startTimer(duration, display) {
     var timer = duration,
         minutes, seconds;
-        console.log(timer);
+
     setInterval(function() {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
@@ -109,12 +113,10 @@ function startTimer(duration, display) {
 
 
         display.textContent = minutes + ":" + seconds;
+        timeLeft=display.textContent;
 
-        if (matchCount == 16) {
 
-            elapsedTime=duration-(minutes*60+seconds);
-            return;
-        };
+
         if (--timer < 0) {
             timer = duration;
             alert("You are out of time!!!");
