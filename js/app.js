@@ -20,7 +20,7 @@ function shuffle(array) {
     });
     var threeMinutes = 60 * 3,
         display = document.querySelector('#timer');
-        console.log(display);
+    console.log(display);
     startTimer(threeMinutes, display);
 };
 
@@ -83,7 +83,7 @@ function matchCheck() {
             if (matchCount == 16) {
                 setTimeout(function() {
                     console.log("you win");
-                    alert("You Won! You finished with "+ timeLeft +" left and your player rating is " + endScore.length + " stars! Click reset to play again!");
+                    alert("You Won! You finished with " + timeLeft + " left and your player rating is " + endScore.length + " stars! Click reset to play again!");
 
                 }, 300);
             }
@@ -113,13 +113,16 @@ function startTimer(duration, display) {
 
 
         display.textContent = minutes + ":" + seconds;
-        timeLeft=display.textContent;
-
+        timeLeft = display.textContent;
+        if(matchCount==16){
+            return;
+        }
 
 
         if (--timer < 0) {
             timer = duration;
             alert("You are out of time!!!");
+            return;
         };
 
     }, 1000);
