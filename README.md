@@ -9,3 +9,8 @@ moves reach an upper limit the game will end and ask the player to restart.
 
 This game is compatible with most modern devices with a web browser. 
 
+Dependancies:
+Google Fonts, Boostrap.
+
+
+

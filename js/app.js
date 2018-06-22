@@ -114,10 +114,9 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds;
         timeLeft = display.textContent;
-        if(matchCount==16){
+        if (matchCount == 16) {
             return;
         }
-
 
         if (--timer < 0) {
             timer = duration;
